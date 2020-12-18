@@ -1,13 +1,9 @@
-Flicket
+Como configurar Flicket-PostgreSQL en Slackware
 =======
 
-Flicket is a simple web based ticketing system written in Python using
-the flask web framework which supports English and French locales. Additional
-locales can be added by following the section `Adding Additional Languages`
-within this README.
-
-Documentation
+Creando la base de datos
 -------------
+1. # su postgres
 
 For documentation please visit: https://flicket.readthedocs.io/en/latest/
 
@@ -37,7 +33,7 @@ Prior to installing and running Flicket please read these requirements.
 * SQL Database server with JSON support (for example PostgreSQL >=9.2,
   MySQL >=5.7, MariaDB >=10.2, SQLite >=3.9)
 
-* PostgreSQL see psql_slack.txt
+* PostgreSQL see psql_slack.rst
 
 Production Environment
 ----------------------
