@@ -14,36 +14,6 @@ Creando la base de datos
    de datos
    psql -U "usuario_en_flicket" "nombre_db"
 
-Can I See It Working?
----------------------
-I have a working version at: https://flicket.evereux.uk/. If you'd like access
-drop an email to me at evereux@gmail.com. Tell me username / email you would
-like to use. Currently, all the views require login so I'll have to create an 
-account for you.
+Salida con problemas
+python manage.py db upgrade
 
-Alternatively, see the screenshots that can be found in the documentation link.
-
-
-Upgrading From Earlier Versions
--------------------------------
-
-See the changelog for changes and additional steps to take when upgrading.
-
-
-Requirements
-------------
-Prior to installing and running Flicket please read these requirements.
-
-* Python =>3.6
-
-* SQL Database server with JSON support (for example PostgreSQL >=9.2,
-  MySQL >=5.7, MariaDB >=10.2, SQLite >=3.9)
-
-* PostgreSQL see psql_slack.rst
-
-Production Environment
-----------------------
-
-To serve Flicket within a production environment webservers such as Apache
-or nginx are typically used. See the documentation for how to install Apache
-on Windows.

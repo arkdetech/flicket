@@ -1,0 +1,74 @@
+(venv) bash-5.1$ python manage.py db upgrade
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> fe0f77ef3f46, migrations before source code control
+INFO  [alembic.runtime.migration] Running upgrade fe0f77ef3f46 -> 36c91aa9b3b5, new action model
+Traceback (most recent call last):
+  File "/home/arkdetech/develop/flask/flicket/venv/lib64/python3.9/site-packages/sqlalchemy/engine/base.py", line 1276, in _execute_context
+    self.dialect.do_execute(
+  File "/home/arkdetech/develop/flask/flicket/venv/lib64/python3.9/site-packages/sqlalchemy/engine/default.py", line 609, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedFunction: el operador no existe: boolean + boolean
+LINE 1: ...licket_ticket_action WHERE (assigned IS NOT NULL) + (claimed...
+                                                             ^
+HINT:  Ningún operador coincide en el nombre y tipos de argumentos. Puede ser necesario agregar conversión explícita de tipos.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/arkdetech/develop/flask/flicket/manage.py", line 31, in <module>
+    manager.run()
+  File "/home/arkdetech/develop/flask/flicket/venv/lib64/python3.9/site-packages/flask_script/__init__.py", line 417, in run
+    result = self.handle(argv[0], argv[1:])
+  File "/home/arkdetech/develop/flask/flicket/venv/lib64/python3.9/site-packages/flask_script/__init__.py", line 386, in handle
+    res = handle(*args, **config)
+  File "/home/arkdetech/develop/flask/flicket/venv/lib64/python3.9/site-packages/flask_script/commands.py", line 216, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/arkdetech/develop/flask/flicket/venv/lib64/python3.9/site-packages/flask_migrate/__init__.py", line 96, in wrapped
+    f(*args, **kwargs)
+  File "/home/arkdetech/develop/flask/flicket/venv/lib64/python3.9/site-packages/flask_migrate/__init__.py", line 271, in upgrade
+    command.upgrade(config, revision, sql=sql, tag=tag)
+  File "/home/arkdetech/develop/flask/flicket/venv/lib64/python3.9/site-packages/alembic/command.py", line 298, in upgrade
+    script.run_env()
+  File "/home/arkdetech/develop/flask/flicket/venv/lib64/python3.9/site-packages/alembic/script/base.py", line 489, in run_env
+    util.load_python_file(self.dir, "env.py")
+  File "/home/arkdetech/develop/flask/flicket/venv/lib64/python3.9/site-packages/alembic/util/pyfiles.py", line 98, in load_python_file
+    module = load_module_py(module_id, path)
+  File "/home/arkdetech/develop/flask/flicket/venv/lib64/python3.9/site-packages/alembic/util/compat.py", line 184, in load_module_py
+    spec.loader.exec_module(module)
+  File "<frozen importlib._bootstrap_external>", line 790, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "migrations/env.py", line 87, in <module>
+    run_migrations_online()
+  File "migrations/env.py", line 80, in run_migrations_online
+    context.run_migrations()
+  File "<string>", line 8, in run_migrations
+  File "/home/arkdetech/develop/flask/flicket/venv/lib64/python3.9/site-packages/alembic/runtime/environment.py", line 846, in run_migrations
+    self.get_context().run_migrations(**kw)
+  File "/home/arkdetech/develop/flask/flicket/venv/lib64/python3.9/site-packages/alembic/runtime/migration.py", line 522, in run_migrations
+    step.migration_fn(**kw)
+  File "/home/arkdetech/develop/flask/flicket/migrations/versions/36c91aa9b3b5_new_action_model.py", line 23, in upgrade
+    r = conn.execute('SELECT COUNT(id) FROM flicket_ticket_action WHERE (assigned IS NOT NULL) '
+  File "/home/arkdetech/develop/flask/flicket/venv/lib64/python3.9/site-packages/sqlalchemy/engine/base.py", line 1003, in execute
+    return self._execute_text(object_, multiparams, params)
+  File "/home/arkdetech/develop/flask/flicket/venv/lib64/python3.9/site-packages/sqlalchemy/engine/base.py", line 1172, in _execute_text
+    ret = self._execute_context(
+  File "/home/arkdetech/develop/flask/flicket/venv/lib64/python3.9/site-packages/sqlalchemy/engine/base.py", line 1316, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/arkdetech/develop/flask/flicket/venv/lib64/python3.9/site-packages/sqlalchemy/engine/base.py", line 1510, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/arkdetech/develop/flask/flicket/venv/lib64/python3.9/site-packages/sqlalchemy/util/compat.py", line 182, in raise_
+    raise exception
+  File "/home/arkdetech/develop/flask/flicket/venv/lib64/python3.9/site-packages/sqlalchemy/engine/base.py", line 1276, in _execute_context
+    self.dialect.do_execute(
+  File "/home/arkdetech/develop/flask/flicket/venv/lib64/python3.9/site-packages/sqlalchemy/engine/default.py", line 609, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedFunction) el operador no existe: boolean + boolean
+LINE 1: ...licket_ticket_action WHERE (assigned IS NOT NULL) + (claimed...
+                                                             ^
+HINT:  Ningún operador coincide en el nombre y tipos de argumentos. Puede ser necesario agregar conversión explícita de tipos.
+
+[SQL: SELECT COUNT(id) FROM flicket_ticket_action WHERE (assigned IS NOT NULL) + (claimed IS NOT NULL) + (released IS NOT NULL) + (closed IS NOT NULL) + (opened IS NOT NULL) + (status IS NOT NULL) + (priority IS NOT NULL) != 1]
+(Background on this error at: http://sqlalche.me/e/13/f405)
+(venv) bash-5.1$ 
